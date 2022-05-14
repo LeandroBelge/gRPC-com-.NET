@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Client";
+
+//Comando pra adicionar proto no projeto
+//dotnet-grpc add-file "Protos\diario.proto"
+
+package diario;
+
+service Diario {
+  rpc RecuperarDiario (Recuperar) returns (RetornarDiario);
+}
+
+message Recuperar {
+  string idDiario = 1;
+}
+
+message RetornarDiario {
+  int32 IdDiario = 1;
+  string NomeProfessor = 2;
+  string NomeTurma = 3;
+  bool EhDiarioRegular = 4;
+  google.protobuf.Timestamp DataRecuperacao = 5;
+}

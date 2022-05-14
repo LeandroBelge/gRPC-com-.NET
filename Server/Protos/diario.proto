@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Server";
+
+package diario;
+
+service Diario {
+  rpc RecuperarDiario (Recuperar) returns (RetornarDiario);
+}
+
+message Recuperar {
+  string idDiario = 1;
+}
+
+message RetornarDiario {
+  int32 IdDiario = 1;
+  string NomeProfessor = 2;
+  string NomeTurma = 3;
+  bool EhDiarioRegular = 4;
+  google.protobuf.Timestamp DataRecuperacao = 5;
+}
